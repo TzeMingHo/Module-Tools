@@ -2,10 +2,10 @@ import argparse
 import os
 import re
 
-def sort_list(file_list):
+def sort_list(file_list: list[str]) -> list[str]:
     return sorted(file_list, key=lambda file_name: re.sub(r"^\.", "", file_name).lower())
 
-def format_list(file_list):
+def format_list(file_list: list[str]) -> list[str]:
     return [f"\033[1;34m{file}\033[0m" if os.path.isdir(os.path.join(args.path, file)) else file for file in file_list]
 
 parser = argparse.ArgumentParser(
