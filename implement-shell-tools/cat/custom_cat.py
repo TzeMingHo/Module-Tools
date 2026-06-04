@@ -17,13 +17,16 @@ for path in args.file_path:
     with open(path, "r") as file:
         context = file.read().rstrip().split("\n")
         for line in context:
+
+            should_number_line = False;
+
             if (args.non_blank):
                 if (len(line) != 0):
-                    print(f'{str(count).rjust(6, " ")}  {line}')
-                    count += 1
-                else:
-                    print(line)
+                    should_number_line = True
             elif (args.number):
+                should_number_line = True
+
+            if (should_number_line):
                 print(f'{str(count).rjust(6, " ")}  {line}')
                 count += 1
             else:
